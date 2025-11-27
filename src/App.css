@@ -1,38 +1,131 @@
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #22d3ee;
+  --primary-700: #0ea5b7;
+  --border: #1f2937;
+}
+
 .App {
+  min-height: 100vh;
+  background: radial-gradient(1000px 500px at 20% -10%, #103352 0%, #0f172a 50%),
+    radial-gradient(600px 300px at 100% 0%, #1a113a 0%, #0f172a 60%);
+  color: var(--text);
+}
+
+.header {
+  padding: 40px 20px 10px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+  font-size: 32px;
+  letter-spacing: 0.5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(17,24,39,0.8), rgba(17,24,39,0.6));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.field input[type="file"],
+.field input[type="date"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background-color: #0b1220;
+  color: var(--text);
+}
+
+.button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  background: linear-gradient(180deg, var(--primary), var(--primary-700));
+  color: #05161a;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button.secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.error {
+  background: #2b1020;
+  color: #ffb4c8;
+  border: 1px solid #50123a;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.results {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.imageWrap {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.imageWrap img {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
 }
