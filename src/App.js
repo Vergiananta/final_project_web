@@ -70,42 +70,50 @@ function App() {
         <div className="title">Tide Forecast</div>
         <div className="subtitle">Prediksi pasang-surut berdasarkan data CSV</div>
       </div>
-      <div className="container">
-        <form className="card" onSubmit={onSubmit}>
-          <div className="field">
-            <label>File CSV</label>
-            <input type="file" accept=".csv" onChange={(e) => setFile(e.target.files[0] || null)} />
-          </div>
-          <div className="grid">
-            <div className="field">
-              <label>Tanggal Mulai</label>
-              <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-            </div>
-            <div className="field">
-              <label>Tanggal Selesai</label>
-              <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-            </div>
-          </div>
-          {error && <div className="error">{error}</div>}
-          <button className="button" type="submit" disabled={loading}>
-            {loading ? 'Memproses...' : 'Proses Prediksi'}
-          </button>
-        </form>
+      <div className="container py-3">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="card shadow border-0">
+              <div className="card-body p-4">
+                <form onSubmit={onSubmit}>
+                  <div className="mb-3">
+                    <label className="form-label text-white">File CSV</label>
+                    <input type="file" accept=".csv" onChange={(e) => setFile(e.target.files[0] || null)} className="form-control" />
+                  </div>
+                  <div className="row g-3">
+                    <div className="col-sm-6">
+                      <label className="form-label text-white">Tanggal Mulai</label>
+                      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="form-control" />
+                    </div>
+                    <div className="col-sm-6">
+                      <label className="form-label text-white">Tanggal Selesai</label>
+                      <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="form-control cursor-pointer" />
+                    </div>
+                  </div>
+                  {error && <div className="alert alert-danger mt-3">{error}</div>}
+                  <button className="btn btn-primary mt-3" type="submit" disabled={loading}>
+                    {loading ? 'Memproses...' : 'Proses Prediksi'}
+                  </button>
+                </form>
 
-        {(downloadUrl || plotUrl) && (
-          <div className="results">
-            {downloadUrl && (
-              <a className="button secondary" href={downloadUrl} download={downloadName}>
-                Unduh Excel Hasil Prediksi
-              </a>
-            )}
-            {plotUrl && (
-              <div className="imageWrap">
-                <img src={plotUrl} alt="Plot Prediksi" />
+                {(downloadUrl || plotUrl) && (
+                  <div className="mt-4">
+                    {downloadUrl && (
+                      <a className="btn btn-outline-secondary me-2" href={downloadUrl} download={downloadName}>
+                        Unduh Excel Hasil Prediksi
+                      </a>
+                    )}
+                    {plotUrl && (
+                      <div className="mt-3">
+                        <img src={plotUrl} alt="Plot Prediksi" className="img-fluid rounded" />
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

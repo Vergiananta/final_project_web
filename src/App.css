@@ -10,8 +10,8 @@
 
 .App {
   min-height: 100vh;
-  background: radial-gradient(1000px 500px at 20% -10%, #103352 0%, #0f172a 50%),
-    radial-gradient(600px 300px at 100% 0%, #1a113a 0%, #0f172a 60%);
+  background: radial-gradient(1000px 500px at 20% -10%, #153e63 0%, #182544 50%),
+    radial-gradient(600px 300px at 100% 0%, #241752 0%, #263a69 60%);
   color: var(--text);
 }
 
