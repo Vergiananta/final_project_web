@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import sampleXlsx from "./assert/sample_data.xlsx";
 
 const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
@@ -102,6 +103,15 @@ function App() {
                       onChange={(e) => setFile(e.target.files[0] || null)}
                       className="form-control"
                     />
+                    <div className="mt-2">
+                      <a
+                        className="btn btn-outline-secondary btn-sm"
+                        href={sampleXlsx}
+                        download="sample_data.xlsx"
+                      >
+                        Unduh Sample Data (XLSX)
+                      </a>
+                    </div>
                   </div>
                   <div className="row g-3">
                     <div className="col-sm-6">
